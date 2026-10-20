@@ -165,6 +165,9 @@ export const actions = {
     set((d) => ({ ...d, incidents: [{ ...i, id: `SI-${Date.now().toString().slice(-5)}`, status: "Open", createdAt: Date.now() }, ...d.incidents] }));
   },
   resolveIncident(id: string) { set((d) => ({ ...d, incidents: d.incidents.map((i) => i.id === id ? { ...i, status: "Resolved" } : i) })); },
+  upsertEmergencyPriority(id: string, priority: Priority) {
+    set((d) => ({ ...d, emergencies: d.emergencies.map((e) => (e.id === id ? { ...e, priority } : e)) }));
+  },
   reset() { db = seed(); emit(); },
 };
 
