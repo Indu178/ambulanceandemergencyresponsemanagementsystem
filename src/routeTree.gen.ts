@@ -10,11 +10,27 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AmbulancesRouteImport } from './routes/ambulances'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as EmergenciesRouteImport } from './routes/emergencies'
+import { Route as HospitalsRouteImport } from './routes/hospitals'
+import { Route as PriorityRouteImport } from './routes/priority'
+import { Route as SafetyRouteImport } from './routes/safety'
+import { Route as TrackingRouteImport } from './routes/tracking'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AmbulancesRoute = AmbulancesRouteImport.update({
+  id: '/ambulances',
+  path: '/ambulances',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmergenciesRoute = EmergenciesRouteImport.update({
@@ -22,31 +38,100 @@ const EmergenciesRoute = EmergenciesRouteImport.update({
   path: '/emergencies',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HospitalsRoute = HospitalsRouteImport.update({
+  id: '/hospitals',
+  path: '/hospitals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PriorityRoute = PriorityRouteImport.update({
+  id: '/priority',
+  path: '/priority',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SafetyRoute = SafetyRouteImport.update({
+  id: '/safety',
+  path: '/safety',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrackingRoute = TrackingRouteImport.update({
+  id: '/tracking',
+  path: '/tracking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ambulances': typeof AmbulancesRoute
+  '/analytics': typeof AnalyticsRoute
   '/emergencies': typeof EmergenciesRoute
+  '/hospitals': typeof HospitalsRoute
+  '/priority': typeof PriorityRoute
+  '/safety': typeof SafetyRoute
+  '/tracking': typeof TrackingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ambulances': typeof AmbulancesRoute
+  '/analytics': typeof AnalyticsRoute
   '/emergencies': typeof EmergenciesRoute
+  '/hospitals': typeof HospitalsRoute
+  '/priority': typeof PriorityRoute
+  '/safety': typeof SafetyRoute
+  '/tracking': typeof TrackingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ambulances': typeof AmbulancesRoute
+  '/analytics': typeof AnalyticsRoute
   '/emergencies': typeof EmergenciesRoute
+  '/hospitals': typeof HospitalsRoute
+  '/priority': typeof PriorityRoute
+  '/safety': typeof SafetyRoute
+  '/tracking': typeof TrackingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/emergencies'
+  fullPaths:
+    | '/'
+    | '/ambulances'
+    | '/analytics'
+    | '/emergencies'
+    | '/hospitals'
+    | '/priority'
+    | '/safety'
+    | '/tracking'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/emergencies'
-  id: '__root__' | '/' | '/emergencies'
+  to:
+    | '/'
+    | '/ambulances'
+    | '/analytics'
+    | '/emergencies'
+    | '/hospitals'
+    | '/priority'
+    | '/safety'
+    | '/tracking'
+  id:
+    | '__root__'
+    | '/'
+    | '/ambulances'
+    | '/analytics'
+    | '/emergencies'
+    | '/hospitals'
+    | '/priority'
+    | '/safety'
+    | '/tracking'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AmbulancesRoute: typeof AmbulancesRoute
+  AnalyticsRoute: typeof AnalyticsRoute
   EmergenciesRoute: typeof EmergenciesRoute
+  HospitalsRoute: typeof HospitalsRoute
+  PriorityRoute: typeof PriorityRoute
+  SafetyRoute: typeof SafetyRoute
+  TrackingRoute: typeof TrackingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +143,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ambulances': {
+      id: '/ambulances'
+      path: '/ambulances'
+      fullPath: '/ambulances'
+      preLoaderRoute: typeof AmbulancesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/emergencies': {
       id: '/emergencies'
       path: '/emergencies'
@@ -65,12 +164,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmergenciesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hospitals': {
+      id: '/hospitals'
+      path: '/hospitals'
+      fullPath: '/hospitals'
+      preLoaderRoute: typeof HospitalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/priority': {
+      id: '/priority'
+      path: '/priority'
+      fullPath: '/priority'
+      preLoaderRoute: typeof PriorityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/safety': {
+      id: '/safety'
+      path: '/safety'
+      fullPath: '/safety'
+      preLoaderRoute: typeof SafetyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tracking': {
+      id: '/tracking'
+      path: '/tracking'
+      fullPath: '/tracking'
+      preLoaderRoute: typeof TrackingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AmbulancesRoute: AmbulancesRoute,
+  AnalyticsRoute: AnalyticsRoute,
   EmergenciesRoute: EmergenciesRoute,
+  HospitalsRoute: HospitalsRoute,
+  PriorityRoute: PriorityRoute,
+  SafetyRoute: SafetyRoute,
+  TrackingRoute: TrackingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
